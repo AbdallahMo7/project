@@ -1,0 +1,83 @@
+body{
+  background-image:url("bg.png");
+    margin: 0;
+    padding: 0;
+    
+    font-family: sans-serif;
+}
+.container
+{
+    width: 300px; 
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    border-radius: 20px;
+}
+.container h2
+{
+    color: black;
+    text-transform: uppercase;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif; 
+    font-size: 24px; 
+    font-style: normal; 
+    font-variant: normal;
+     font-weight: 700; 
+     line-height: 26.4px;
+    
+}
+::placeholder
+{
+    color: black;
+}
+.container input[type="text"],.container input[type="password"] 
+{
+    border:0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid rgb(185, 132, 132);
+    padding: 14px 10px;
+    width: 200px;
+    outline: none;
+    color: black;
+    border-radius: 24px;
+    transition: 0.25s;
+}
+.container input[type="text"]:focus,.container input[type="password"]:focus
+{
+    width: 280px;
+    border-color: black;
+} 
+.container input[type="submit"]
+{
+    border:0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid rgba(225,126,120,255);
+    padding: 14px 40px;
+    width: 200px;
+    outline: none;
+    color: black;
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer;
+    font-size: larger;
+    
+}
+
+.container input[type="submit"]:hover
+{
+background:black;
+color: white;
+}
+
+#link
+{
+    text-decoration: none;
+}

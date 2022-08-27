@@ -1,0 +1,110 @@
+<?php
+include_once("../connection.php");
+
+if($_SERVER['REQUEST_METHOD']=='GET')
+{
+    if(!isset($_GET["ID"]))
+{
+    header("Location:../Welcome_doctor.php");
+    exit;
+}
+$ID=$_GET["ID"];
+$sql="SELECT * FROM doctor WHERE ID=$ID";
+$result=$conn->query($sql);
+$row=$result->fetch_assoc();
+
+if(!$row)
+{
+    header("location:../Welcome_doctor.php");
+    exit;
+}
+$ID=$row["ID"];
+$FullName=$row["FullName"];
+
+
+}
+else{
+$ID=$_POST["ID"];
+$FullName=$_POST["FullName"];
+
+
+
+}
+
+
+
+
+
+
+
+
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Admin</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+        <div class="container my-5">
+        <h2> <center>Edit Admin</center></h2>
+        <hr>
+        <br>
+        <?php 
+        if(!empty($error_msg))
+        {
+            echo "
+            <div class='alert alert-warning alert-dismissible fade show' role='alert'>
+            <strong>$error_msg</strong>
+            <button type='button' class='btn-close' data-bs-dismiss='alert' arial-label='Close'></button>
+            </div>
+            ";
+        }
+        ?>
+        <form method="post">
+            <input type="hidden" name="ID" value="<?php echo $ID; ?>">
+        <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Full Name</label>
+        <div class="col-sm-6">
+        <input type="text" name="FullName" class="form-control" placeholder="Full Name" readonly="readonly" value="<?php echo $FullName; ?>">
+    </div>
+    </div>
+   
+    </div>
+    
+    
+    <div class="row mb-3">
+
+    </div>
+    </div>
+    <?php 
+    if(!empty($success_msg))
+    {
+        echo "
+        <div class='row mb-3'>
+        <div class='offset-sm-3 col-sm-6'>
+        <div class='alert alert-success alert-dimissible fade show' role='alert'>
+        <strong>$success_msg</strong>
+        <button type='button' class='btn-close' data-bs-dismiss='alert' arial-label='Close'></button>
+        </div>
+        </div>
+        </div>
+        ";
+    }
+    ?>
+    <div class="row mb-3">
+        <div class="col-sm-3 d-grid">
+           <center> <a class="btn btn-outline-primary" href="Message.php" role="button"> Cancel</a></center>
+        </div>  
+        </div>
+        <div>
+    </form>
+    </div>
+</body>
+</html>
